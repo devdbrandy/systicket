@@ -1,17 +1,19 @@
+import 'reflect-metadata';
 import express from 'express';
 
-import initializeLoaders from './loaders';
+import initLoaders from './loaders';
+import config from './config';
 
-async function runServer() {
+const bootstrap = async () => {
 	const app = express();
-	const PORT = process.env.PORT || 3000;
+	const PORT = config.port;
 	const logger = console;
 
-	await initializeLoaders(app);
+	await initLoaders(app);
 
 	app.listen(PORT, () => {
 		logger.log('🚀', 'Server running on http://localhost:3000');
 	});
-}
+};
 
-runServer();
+bootstrap();
