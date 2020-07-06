@@ -1,5 +1,17 @@
-import app from './app';
+import express from 'express';
 
-const logger = console;
+import initializeLoaders from './loaders';
 
-app.listen(3000, () => logger.log('🚀', 'Server running on http://localhost:3000'));
+async function runServer() {
+	const app = express();
+	const PORT = process.env.PORT || 3000;
+	const logger = console;
+
+	await initializeLoaders(app);
+
+	app.listen(PORT, () => {
+		logger.log('🚀', 'Server running on http://localhost:3000');
+	});
+}
+
+runServer();
