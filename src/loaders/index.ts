@@ -2,10 +2,12 @@ import { Application } from 'express';
 
 // loaders
 import expressLoader from './express.loader';
+import mongooseLoader from './mongoose.loader';
 import apiModules from '../api';
 
 export default async (app: Application) => {
-	expressLoader(app);
+	await mongooseLoader();
+	await expressLoader(app);
 
 	// load api modules
 	apiModules(app);
