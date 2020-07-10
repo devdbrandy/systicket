@@ -12,7 +12,7 @@ const bootstrap = async () => {
 	await initLoaders(app);
 
 	app.listen(PORT, () => {
-		logger.log('🚀', 'Server running on http://localhost:3000');
+		logger.log('🚀', `Server running on http://localhost:${PORT}`);
 	});
 };
 

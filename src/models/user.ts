@@ -12,7 +12,7 @@ const userSchema = new Schema(
 			unique: true,
 			required: true,
 		},
-		messages: [{ type: mongoose.Schema.Types.ObjectId }],
+		messages: [{ type: Schema.Types.ObjectId, ref: 'Message' }],
 	},
 	{ timestamps: true, versionKey: false }
 );

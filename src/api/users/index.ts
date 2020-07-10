@@ -1,18 +1,10 @@
 import { Router } from 'express';
 
-import { User, Message } from '../../models';
+import UsersController from './users.controller';
 
 const router = Router();
 
 /* GET users. */
-router.get('/users', async (req, res) => {
-	const user = new User({ username: 'dbrandy' });
-	const message = new Message({ user: user._id, text: 'some message' });
-
-	await user.save();
-	await message.save();
-
-	res.json({ success: true, data: user });
-});
+router.get('/users', UsersController.getUsers());
 
 export default router;
